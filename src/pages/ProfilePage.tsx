@@ -348,13 +348,27 @@ export default function ProfilePage() {
 
         <div className="bg-white rounded-lg p-6 lg:p-8 shadow-sm border border-gray-100 space-y-5">
           <div className="flex items-center gap-4 mb-2">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+            {/* <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
               <span className="text-xl font-semibold text-primary">
-                {profile.fullName
-                  ? profile.fullName.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
+                {profile?.profile_picture
+                  ? profile?.profile_picture
                   : "?"}
               </span>
-            </div>
+            </div> */}
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden">
+  {profile?.profile_picture ? (
+    <img
+      src={profile?.profile_picture}
+      alt={profile?.fullName || "Profile Picture"}
+      className="w-full h-full object-cover"
+    />
+  ) : (
+    <span className="text-xl font-semibold text-primary">
+      ?
+    </span>
+  )}
+</div>
+
             <div>
               <p className="text-lg font-semibold text-gray-800">
                 {profile.fullName || "Your Name"}
